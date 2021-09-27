@@ -7,16 +7,16 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import daniel.chatmodel.features.login.LoginResult
+import daniel.chatmodel.model.Result
 
 class LoginViewModel: ViewModel() {
     private val auth = Firebase.auth
 
-    private val mutableSignInResult = MutableLiveData<LoginResult>()
-    val signInResult: LiveData<LoginResult> = mutableSignInResult
+    private val mutableSignInResult = MutableLiveData<Result>()
+    val signInResult: LiveData<Result> = mutableSignInResult
 
-    private val mutableSignUpResult = MutableLiveData<LoginResult>()
-    val signUpResult: LiveData<LoginResult> = mutableSignUpResult
+    private val mutableSignUpResult = MutableLiveData<Result>()
+    val signUpResult: LiveData<Result> = mutableSignUpResult
 
     fun signIn(email: String, password: String){
         auth.signInWithEmailAndPassword(email, password)
@@ -30,17 +30,17 @@ class LoginViewModel: ViewModel() {
 
     private fun onSignInResult(task: Task<AuthResult>) {
         if (task.isSuccessful){
-            mutableSignInResult.value = LoginResult.SUCCESS
+            mutableSignInResult.value = Result.SUCCESS
         } else {
-            mutableSignInResult.value = LoginResult.FAILURE
+            mutableSignInResult.value = Result.FAILURE
         }
     }
 
     private fun onSignUpResult(task: Task<AuthResult>) {
         if (task.isSuccessful){
-            mutableSignUpResult.value = LoginResult.SUCCESS
+            mutableSignUpResult.value = Result.SUCCESS
         } else {
-            mutableSignUpResult.value = LoginResult.FAILURE
+            mutableSignUpResult.value = Result.FAILURE
         }
     }
 

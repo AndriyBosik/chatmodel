@@ -6,8 +6,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import androidx.navigation.fragment.findNavController
 import daniel.chatmodel.R
+import daniel.chatmodel.model.Result
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
@@ -20,10 +20,10 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         viewModel.signUpResult.observe(viewLifecycleOwner) { onSignUpResult(it) }
     }
 
-    private fun onSignUpResult(loginResult: LoginResult) {
-        when (loginResult) {
-            LoginResult.SUCCESS -> goToMain()
-            LoginResult.FAILURE -> signUpFailed()
+    private fun onSignUpResult(result: Result) {
+        when (result) {
+            Result.SUCCESS -> goToMain()
+            Result.FAILURE -> signUpFailed()
         }
     }
 

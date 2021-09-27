@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Chat Model</string>
     <string name="please_sign_in">Please, sign in</string>
+    <string name="toast_loading_data">Loading data</string>
+    <string name="toast_something_went_wrong">Something went wrong</string>
+    <string name="enter_email">Enter your email</string>
+    <string name="enter_password">Enter your password</string>
+    <string name="sign_in">Sign in!</string>
+    <string name="or_sign_up">or sign up</string>
 </resources>

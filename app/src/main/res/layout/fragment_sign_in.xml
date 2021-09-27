@@ -1,52 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="10dp"
-    tools:context=".MainActivity">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
+    <data>
+        <variable
+            name="viewModel"
+            type="daniel.chatmodel.viewmodel.AuthViewModel" />
+    </data>
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:text="@string/please_sign_in"
-        android:textSize="15dp" />
+        android:orientation="vertical"
+        android:padding="10dp"
+        tools:context=".activity.MainActivity">
 
-    <EditText
-        android:id="@+id/et_sign_in_enter_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:hint="Enter your email" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:text="@string/please_sign_in"
+            android:textSize="15sp" />
 
-    <EditText
-        android:id="@+id/et_sign_in_enter_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:inputType="textPassword"
-        android:hint="Enter your password" />
+        <EditText
+            android:id="@+id/et_sign_in_enter_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:hint="@string/enter_email"
+            android:text="@={viewModel.credentials.email}"/>
 
-    <Button
-        android:id="@+id/btn_sign_in"
-        style="@style/RoundedButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign in!" />
+        <EditText
+            android:id="@+id/et_sign_in_enter_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:inputType="textPassword"
+            android:hint="@string/enter_password"
+            android:text="@={viewModel.credentials.password}"/>
 
-    <TextView
-        android:id="@+id/btn_go_to_sign_up"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="or sign up"
-        android:textColor="?linkColor"
-        android:textSize="15dp" />
+        <Button
+            android:id="@+id/btn_sign_in"
+            style="@style/RoundedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_in"
+            android:onClick="@{() -> viewModel.signIn()}" />
 
+        <TextView
+            android:id="@+id/btn_go_to_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/or_sign_up"
+            android:textColor="?linkColor"
+            android:textSize="15sp" />
 
-</LinearLayout>
+    </LinearLayout>
+</layout>
